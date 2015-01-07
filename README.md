@@ -1,25 +1,41 @@
-# Ember-cli-masked-inputs
+# ember-cli-masked-inputs
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status][]](https://travis-ci.org/toranb/ember-cli-masked-inputs)
+[![NPM Downlaads](https://img.shields.io/npm/dm/ember-cli-masked-inputs.svg)](https://www.npmjs.org/package/ember-cli-masked-inputs)
+
+## Description
+Ember-cli-masked-inputs is a set of ember components that each provide a consistent masked look and feel for great user experiences
 
 ## Installation
+```
+# install via npm
+$ npm install ember-cli-masked-inputs --save-dev
+# make ember-cli fetch internal dependencies
+$ ember g ember-cli-masked-inputs
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Phone Number
 
-## Running
+```
+{{phone-number value=model.number}}
+```
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+## Credit Card Expiration
 
-## Running Tests
+```
+{{credit-card-expiration value=model.expiration}}
+```
 
-* `ember test`
-* `ember test --server`
+## Running the unit tests
 
-## Building
+    npm install
+    ember test
 
-* `ember build`
+## License
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+Copyright © 2015 Toran Billups http://toranbillups.com
+
+Licensed under the MIT License
+
+
+[Build Status]: https://secure.travis-ci.org/toranb/ember-cli-masked-inputs.png?branch=master
