@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-masked-inputs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "addon with a set of ember components that each provide a consistent masked look and feel for great user experiences",
   "directories": {
     "doc": "doc",

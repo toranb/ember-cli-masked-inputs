@@ -90,3 +90,11 @@ test("credit-card-expiration test", function() {
         equal(find('input:eq(1)').val(), '12/1985');
     });
 });
+
+test("allows you to pass in a custom css class attribute", function() {
+    visit('/');
+    andThen(function(){
+        equal(find('input:eq(0)').hasClass('foobar'), true);
+        equal(find('input:eq(1)').hasClass('bazz'), true);
+    });
+});
