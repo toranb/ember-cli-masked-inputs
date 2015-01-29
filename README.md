@@ -17,13 +17,13 @@ $ ember g ember-cli-masked-inputs
 ## Phone Number
 
 ```
-{{phone-number value=model.number clazz="foo"}}
+{{phone-number value=model.number class="foo"}}
 ```
 
 ## Credit Card Expiration
 
 ```
-{{credit-card-expiration value=model.expiration clazz="bar"}}
+{{credit-card-expiration value=model.expiration class="bar"}}
 ```
 
 ## Running the unit tests
