@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-    tagName: 'input',
-    attributeBindings: ['value', 'type'],
+export default Ember.TextField.extend({
     type: 'tel',
     validate: function(strCheck, e) {
         var unicode = e.charCode ? e.charCode : e.keyCode;
