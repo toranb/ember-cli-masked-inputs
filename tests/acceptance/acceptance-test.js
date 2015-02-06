@@ -5,6 +5,9 @@ import lookup from '../helpers/lookup';
 
 var App;
 
+var phone_input = 'input:eq(0)';
+var expiration_input = 'input:eq(1)';
+
 module('masked input acceptance tests', {
     setup: function() {
         App = startApp();
@@ -19,17 +22,16 @@ test("phone-number test value is bound to passed in value", function() {
     var controller = lookup('controller:application');
     equal(controller.get('number'), '');
     visit('/');
-    fillIn('input:eq(0)', valid_phone_number);
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, valid_phone_number);
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
         equal(controller.get('number'), valid_phone_number);
-        equal(find('input:eq(0)').val(), valid_phone_number);
+        equal(find(phone_input).val(), valid_phone_number);
     });
 });
 
 test("credit-card-expiration test value is bound to passed in value", function() {
     var valid_expiration = '12/2016';
-    var expiration_input = 'input:eq(1)';
     var controller = lookup('controller:application');
     equal(controller.get('expiration'), '');
     visit('/');
@@ -43,86 +45,95 @@ test("credit-card-expiration test value is bound to passed in value", function()
 
 test("phone-number test", function() {
     visit('/');
-    fillIn('input:eq(0)', '515-555');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '515-555');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '');
+        equal(find(phone_input).val(), '');
     });
-    fillIn('input:eq(0)', '515-555-5454');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '515-555-5454');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '515-555-5454');
+        equal(find(phone_input).val(), '515-555-5454');
     });
-    fillIn('input:eq(0)', '5');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '5');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '');
+        equal(find(phone_input).val(), '');
     });
-    fillIn('input:eq(0)', '515-555-54546888888809');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '515-555-54546888888809');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '515-555-5454');
+        equal(find(phone_input).val(), '515-555-5454');
     });
-    fillIn('input:eq(0)', '515-555-545a4');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '515-555-545a4');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '515-555-5454');
+        equal(find(phone_input).val(), '515-555-5454');
     });
-    fillIn('input:eq(0)', '515555545abc14');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '515555545abc14');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '515-555-5451');
+        equal(find(phone_input).val(), '515-555-5451');
     });
-    fillIn('input:eq(0)', '5-*15-5^*(55545abc14');
-    triggerEvent('input:eq(0)', 'blur');
+    fillIn(phone_input, '5-*15-5^*(55545abc14');
+    triggerEvent(phone_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(0)').val(), '515-555-5451');
+        equal(find(phone_input).val(), '515-555-5451');
     });
 });
 
 test("credit-card-expiration test", function() {
     visit('/');
-    fillIn('input:eq(1)', '12/198');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '12/198');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '');
+        equal(find(expiration_input).val(), '');
     });
-    fillIn('input:eq(1)', '12/1983');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '12/1983');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '12/1983');
+        equal(find(expiration_input).val(), '12/1983');
     });
-    fillIn('input:eq(1)', '1');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '1');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '');
+        equal(find(expiration_input).val(), '');
     });
-    fillIn('input:eq(1)', '12/19834567');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '12/19834567');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '12/1983');
+        equal(find(expiration_input).val(), '12/1983');
     });
-    fillIn('input:eq(1)', '12/198a4');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '12/198a4');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '12/1984');
+        equal(find(expiration_input).val(), '12/1984');
     });
-    fillIn('input:eq(1)', '121984');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '121984');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '12/1984');
+        equal(find(expiration_input).val(), '12/1984');
     });
-    fillIn('input:eq(1)', '12/^*(1985');
-    triggerEvent('input:eq(1)', 'blur');
+    fillIn(expiration_input, '12/^*(1985');
+    triggerEvent(expiration_input, 'blur');
     andThen(function(){
-        equal(find('input:eq(1)').val(), '12/1985');
+        equal(find(expiration_input).val(), '12/1985');
     });
 });
 
 test("allows you to pass in a custom css class attribute", function() {
     visit('/');
     andThen(function(){
-        equal(find('input:eq(0)').hasClass('foobar'), true);
-        equal(find('input:eq(1)').hasClass('bazz'), true);
+        equal(find(phone_input).hasClass('foobar'), true);
+        equal(find(phone_input).hasClass('wat'), true);
+        equal(find(expiration_input).hasClass('bazz'), true);
+    });
+});
+
+test("type is set to tel for both components", function() {
+    visit('/');
+    andThen(function(){
+        equal(find(phone_input).attr('type'), 'tel');
+        equal(find(expiration_input).attr('type'), 'tel');
     });
 });
